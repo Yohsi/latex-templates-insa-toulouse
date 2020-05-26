@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt,twoside]{article}
+\documentclass[a4paper,11pt,oneside]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{lscape}
@@ -10,7 +10,8 @@
 \usepackage{hyperref}
 \usepackage{titlesec}
 \usepackage{eurosym}
-\usepackage[francais]{babel}
+\usepackage[french]{babel}
+\usepackage{minitoc}             % pour la table des annexes
 
 %\input{advanced.params/listings.conf}
 \input{advanced.params/tikz.conf}
@@ -20,5 +21,50 @@
 \date{\today}
 
 \begin{document}
-    Laaa
+	\dosecttoc{}	% Sert à générer la table des annexes
+	
+	\tableofcontents
+	\clearpage
+	
+ 	\sectionnn{Introduction}
+    	L'introduction
+    
+    \clearpage
+    \section{Partie 1}
+		La première partie
+		
+    \clearpage
+    \section{Partie 2}
+		La deuxième partie
+
+    \clearpage
+    \sectionnn{Conclusion}
+    	La conclusion
+    
+    
+    
+    % TABLE DES ANNEXES
+    \clearpage
+    \appendix
+    \sectionnn{Annexes}
+    
+    \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+    \renewcommand{\stctitle}{Table des annexes}
+    \renewcommand\thesubsection{A\arabic{subsection}}
+    \renewcommand{\stcSSfont}{}
+    \mtcsetrules{secttoc}{off}
+    \secttoc
+    
+    
+    % ANNEXES
+    \clearpage
+    \pagenumbering{Roman}
+    \subsection{Annexe 1}
+    	La première annexe
+    	
+    \clearpage
+    \subsection{Annexe 5}
+    	La deuxième annexe
+    
+    
 \end{document}
